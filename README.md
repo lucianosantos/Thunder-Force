@@ -1,6 +1,6 @@
 # Thunder Force
 
-Reviving an old game. I first coded in C++ + SDL1. Now I recreated a web version.
+Reviving an old game I first coded in C++ and SDL1. Now in a web version.
 
 ## Resources
 

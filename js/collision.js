@@ -21,6 +21,7 @@ function checkCollisions() {
             ) {
                 // Bullet hits enemy: Trigger explosion
                 triggerExplosion(enemy.x, enemy.y);
+                score += 5; // Add 5 points for each destroyed enemy
                 enemies.splice(enemyIndex, 1); // Remove enemy
                 player.bullets.splice(bulletIndex, 1); // Remove bullet
             }

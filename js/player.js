@@ -135,5 +135,5 @@ function startBlinking() {
 function drawLives() {
     ctx.font = '20px Arial';
     ctx.fillStyle = 'white';
-    ctx.fillText(`Lives: ${player.lives}`, 10, 30); // Display lives at top left corner
+    ctx.fillText(`Lives: ${player.lives}`, 80, 30); // Display lives at top left corner
 }

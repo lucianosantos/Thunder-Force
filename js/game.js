@@ -35,7 +35,8 @@ function gameLoop() {
     drawPlayer();
     drawEnemies();
     drawBullets();
-    drawLives();
+    drawLives(); // Draw lives in top-left
+    drawScore(); // Draw score in top-right
     requestAnimationFrame(gameLoop);
 }
 

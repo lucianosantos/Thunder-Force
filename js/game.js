@@ -31,10 +31,11 @@ function gameLoop() {
     updateEnemies();
     updateBullets();
     checkCollisions();
-    drawExplosions(); // Add this to ensure explosions are drawn
+    drawExplosions();
     drawPlayer();
     drawEnemies();
     drawBullets();
+    drawLives();
     requestAnimationFrame(gameLoop);
 }
 

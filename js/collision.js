@@ -11,6 +11,7 @@ const frameDuration = 100; // Time each frame is shown in ms
 
 function checkCollisions() {
     enemies.forEach((enemy, enemyIndex) => {
+        // Check collision between bullets and enemies
         player.bullets.forEach((bullet, bulletIndex) => {
             if (
                 bullet.x < enemy.x + enemy.width &&
@@ -24,6 +25,19 @@ function checkCollisions() {
                 player.bullets.splice(bulletIndex, 1); // Remove bullet
             }
         });
+
+        // Check collision between player and enemies
+        if (
+            player.isAlive &&
+            player.x < enemy.x + enemy.width &&
+            player.x + player.width > enemy.x &&
+            player.y < enemy.y + enemy.height &&
+            player.y + player.height > enemy.y
+        ) {
+            // Enemy hits player: Player loses a life and respawns
+            playerHit();
+            enemies.splice(enemyIndex, 1); // Remove enemy after collision
+        }
     });
 }
 

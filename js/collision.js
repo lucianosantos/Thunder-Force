@@ -1,6 +1,9 @@
 const explosionImg = new Image();
 explosionImg.src = 'img/explosao.png'; // Path to the explosion sprite sheet
 
+const explosionSound = new Audio('sounds/medium-explosion.mp3');
+const playerHitSound = new Audio('sounds/medium-explosion.mp3');
+
 let explosions = []; // To keep track of all active explosions
 
 // Explosion frame details
@@ -11,7 +14,6 @@ const frameDuration = 100; // Time each frame is shown in ms
 
 function checkCollisions() {
     enemies.forEach((enemy, enemyIndex) => {
-        // Check collision between bullets and enemies
         player.bullets.forEach((bullet, bulletIndex) => {
             if (
                 bullet.x < enemy.x + enemy.width &&
@@ -19,8 +21,13 @@ function checkCollisions() {
                 bullet.y < enemy.y + enemy.height &&
                 bullet.y + bullet.height > enemy.y
             ) {
-                // Bullet hits enemy: Trigger explosion
+                // Bullet hits enemy: Trigger explosion and play explosion sound
                 triggerExplosion(enemy.x, enemy.y);
+
+                // Create a new instance of the explosion sound for each explosion
+                let explosionSound = new Audio('sounds/medium-explosion.mp3'); // Path to your explosion sound file
+                explosionSound.play(); // Play the explosion sound
+
                 score += 5; // Add 5 points for each destroyed enemy
                 enemies.splice(enemyIndex, 1); // Remove enemy
                 player.bullets.splice(bulletIndex, 1); // Remove bullet
@@ -35,8 +42,13 @@ function checkCollisions() {
             player.y < enemy.y + enemy.height &&
             player.y + player.height > enemy.y
         ) {
-            // Enemy hits player: Player loses a life and respawns
+            // Player hit by enemy
             playerHit();
+
+            // Play player hit sound when the player is hit
+            let playerHitSound = new Audio('sounds/medium-explosion.mp3'); // Path to player hit sound file
+            playerHitSound.play(); // Play the sound when the player is hit
+
             enemies.splice(enemyIndex, 1); // Remove enemy after collision
         }
     });

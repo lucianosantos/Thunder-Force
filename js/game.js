@@ -1,11 +1,22 @@
 // Load resources
 const backgroundImg = new Image();
 backgroundImg.src = 'img/sky.gif';
-/*
-const backgroundMusic = new Audio('assets/background-music.mp3');
+
+const backgroundMusic = new Audio('sounds/music-for-arcade-style-game.mp3');
 backgroundMusic.loop = true;
-backgroundMusic.play();
-*/
+backgroundMusic.volume = 0.8;
+
+function startBackgroundMusic() {
+    if (backgroundMusic.paused) {
+        backgroundMusic.play().catch((err) => {
+            console.log('Background music autoplay prevented:', err);
+        });
+    }
+}
+
+window.addEventListener('click', startBackgroundMusic);
+window.addEventListener('keydown', startBackgroundMusic);
+
 let backgroundX = 0;
 const backgroundSpeed = 2;
 

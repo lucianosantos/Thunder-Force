@@ -2,9 +2,12 @@
 const playerImg = new Image();
 playerImg.src = 'img/nave.png';
 
+const shootSound = new Audio('sounds/retro-laser.mp3');
+shootSound.volume = 0.7;
+
 // Additional variable to handle blinking state
 let isBlinking = false;
-let blinkSpeed = 50;
+let blinkSpeed = 35;
 
 // Define the player object with initial properties
 let player = {
@@ -53,6 +56,7 @@ function updatePlayer() {
                 width: 5,
                 height: 2,
             });
+            shootSound.play();
             player.lastShootTime = now;
         }
     }

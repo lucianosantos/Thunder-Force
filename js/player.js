@@ -47,7 +47,7 @@ function updatePlayer() {
         let now = Date.now();
         if (
             (keys[' '] || keys['Spacebar']) &&
-            now - player.lastShootTime > 500
+            now - player.lastShootTime > configs.playerShootCooldown
         ) {
             // Fire a bullet and reset shoot time
             player.bullets.push({

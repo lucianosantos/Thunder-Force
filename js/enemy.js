@@ -15,8 +15,7 @@ function spawnEnemy() {
 
 function updateEnemies() {
     let now = Date.now();
-    if (now - lastEnemySpawn > 2000) {
-        // Spawn every 2 seconds
+    if (now - lastEnemySpawn > configs.enemyRespawnTime) {
         spawnEnemy();
         lastEnemySpawn = now;
     }
